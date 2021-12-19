@@ -48,7 +48,7 @@ function App() {
 
             <Route
               exact
-              path="/"
+              path="/TextUtils/"
               element={
                 <TextForm
                   showAlert={showAlert}
