@@ -34,6 +34,7 @@ function App() {
   };
   return (
     <>
+      <TextForm />
       <Router>
         <Navbar
           title="TextUtils"
