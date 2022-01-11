@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 // we used {useState} hook to create state variable
 // we initialized text, setText state variables using useState
 
 export default function TextForm(props) {
+  const inputRef = useRef(null);
   const [text, setText] = useState("Enter text here...");
   // default value of text is 'Enter text here', we can update it using setText
   const handleOnChange = (event) => {
@@ -29,9 +30,10 @@ export default function TextForm(props) {
   };
 
   const handleCopy = () => {
-    let text = document.getElementById("myBox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    console.log(inputRef.current.value);
+    let text = inputRef.current.value;
+    // text.select();
+    navigator.clipboard.writeText(text);
   };
 
   return (
@@ -45,6 +47,7 @@ export default function TextForm(props) {
           className="form-control"
           id="myBox"
           value={text}
+          ref={inputRef}
           onChange={handleOnChange}
           style={{
             backgroundColor: props.mode === "dark" ? "#495057" : "white",
